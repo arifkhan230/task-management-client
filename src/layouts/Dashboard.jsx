@@ -1,4 +1,4 @@
-import { FaBars, FaHome, FaRegEdit, FaShoppingBag, FaUserAlt } from "react-icons/fa";
+import { FaBars, FaHome, FaRegEdit, FaShoppingBag, FaSignOutAlt, FaTasks, FaUserAlt } from "react-icons/fa";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Container from "../Components/Container/Container";
 import useAuth from "../Hooks/useAuth";
@@ -54,6 +54,24 @@ const Dashboard = () => {
                     Profile
                 </NavLink>
             </li>
+            <li>
+                <NavLink
+                    className={linkStyle}
+                    to="/dashboard/create-task"
+                >
+                    <FaTasks />
+                    Create Task
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    className={linkStyle}
+                    to="/dashboard/manage-task"
+                >
+                    <FaRegEdit />
+                    Manage Task
+                </NavLink>
+            </li>
 
             <div className="divider"></div>
 
@@ -72,7 +90,7 @@ const Dashboard = () => {
                     onClick={handleLogout}
                     className={linkStyle}
                 >
-                    <FaShoppingBag />
+                    <FaSignOutAlt />
                     Sign Out
                 </button>
             </li>
