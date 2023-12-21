@@ -1,4 +1,4 @@
-import { FaBars, FaHome, FaRegEdit, FaShoppingBag, FaSignOutAlt, FaTasks, FaUserAlt } from "react-icons/fa";
+import { FaBars, FaHome, FaRegEdit,  FaSignOutAlt, FaTasks, FaUserAlt } from "react-icons/fa";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Container from "../Components/Container/Container";
 import useAuth from "../Hooks/useAuth";

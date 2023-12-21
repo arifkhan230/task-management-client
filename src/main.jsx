@@ -17,6 +17,15 @@ import Profile from './pages/Dashboard/Profile/Profile';
 import CreateTask from './pages/Dashboard/CreateTask/CreateTask';
 import ManageTask from './pages/Dashboard/ManageTask/ManageTask';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import UpdateTask from './pages/Dashboard/UpdateTask/UpdateTask';
+
+const queryClient = new QueryClient()
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,37 +41,44 @@ const router = createBrowserRouter([
         element: <Login></Login>
       },
       {
-        path:"register",
-        element:<Register></Register>
+        path: "register",
+        element: <Register></Register>
       }
     ],
   },
   {
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
-    children:[
+    children: [
       {
-        path:"profile",
+        path: "profile",
         element: <Profile></Profile>
       },
       {
         path: "create-task",
-        element:<CreateTask></CreateTask>
+        element: <CreateTask></CreateTask>
       },
       {
-        path:"manage-task",
+        path: "manage-task",
         element: <ManageTask></ManageTask>
+      },
+      {
+        path: "update-task/:id",
+        element:<UpdateTask></UpdateTask>,
+        loader: ({params})=> fetch(`http://localhost:5000/tasks/${params.id}`)
       }
     ]
-    
+
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
-      <Toaster/>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <Toaster />
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>,
 )

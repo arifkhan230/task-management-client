@@ -1,19 +1,23 @@
 import { useForm } from "react-hook-form";
-import useAuth from "../../../Hooks/useAuth";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAuth from "../../../Hooks/useAuth";
+import { useLoaderData } from "react-router-dom";
 
+const UpdateTask = () => {
 
-const CreateTask = () => {
+    const task = useLoaderData();
+    console.log(task);
 
     const { user } = useAuth();
-    const axiosPublic = useAxiosPublic()
+    const axiosPublic = useAxiosPublic();
+    
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
         console.log(data)
 
-        const task = {
+        const updateTask = {
             title: data.title,
             description: data.description,
             priority: data.priority,
@@ -21,12 +25,14 @@ const CreateTask = () => {
             email: user?.email,
             name: user?.displayName
         }
-        // console.log(task);
+        console.log(task._id);
 
-        axiosPublic.post('/task', task)
+        axiosPublic.patch(`/tasks/${task._id}`, updateTask)
             .then(res => {
                 console.log(res.data)
-                toast.success("Task added successfully")
+                if(res.data.modifiedCount > 0){
+                    toast.success("Task updated successfully")
+                }
             })
             .catch(err => {
                 console.log(err.message);
@@ -50,6 +56,7 @@ const CreateTask = () => {
                             type="text"
                             placeholder="title"
                             name="title"
+                            defaultValue={task?.title}
                             className="input input-bordered rounded-sm"
                             required
                             {...register("title")}
@@ -65,6 +72,7 @@ const CreateTask = () => {
                         <textarea
                             className="p-3 border"
                             name="description"
+                            defaultValue={task?.description}
                             placeholder="description"
                             required
                             {...register("description")}
@@ -80,7 +88,7 @@ const CreateTask = () => {
                             <select
                                 className="input input-bordered rounded-sm"
                                 name="priority"
-                                defaultValue="low"
+                                defaultValue={task?.priority}
                                 id="priority"
                                 required
                                 {...register("priority")}
@@ -100,6 +108,7 @@ const CreateTask = () => {
                                 type="date"
                                 placeholder="date"
                                 name="date"
+                                defaultValue={task?.deadline}
                                 className="input input-bordered rounded-sm"
                                 required
                                 {...register("date")}
@@ -112,7 +121,7 @@ const CreateTask = () => {
                             className="btn bg-gradient-to-r from-[#4d516f]
              to-[#322535] font-semibold text-white border-none"
                         >
-                            Create Task
+                            Update Task
                         </button>
                     </div>
                 </form>
@@ -122,5 +131,4 @@ const CreateTask = () => {
         </div>
     );
 };
-
-export default CreateTask;
+export default UpdateTask;
