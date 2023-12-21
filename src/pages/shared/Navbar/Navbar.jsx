@@ -1,6 +1,19 @@
+import { Link, NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
+
+    const navLinks = <>
+        <NavLink
+            to="/"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-blue-800 text-xl font-bold mr-4" : "text-black text-xl font-bold mr-4"
+            }
+        >
+            Home
+        </NavLink>
+    </>
+
     return (
         <div className="navbar bg-base-100 max-w-screen-2xl mx-auto">
             <div className="navbar-start">
@@ -14,8 +27,9 @@ const Navbar = () => {
                         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
-                            <li><a>Sidebar Item 1</a></li>
-                            <li><a>Sidebar Item 2</a></li>
+                            {
+                                navLinks
+                            }
 
                         </ul>
                     </div>
@@ -24,12 +38,14 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                    <li><a>Item 3</a></li>
+                  {
+                    navLinks
+                  }
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link to="login" className="btn btn-accent"> Login
+                </Link>
             </div>
         </div>
     );

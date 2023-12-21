@@ -8,23 +8,33 @@ import {
 import Main from './layouts/Main';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Home from './pages/Home/Home/Home';
+import AuthProvider from './providers/AuthProvider';
+import Login from './pages/Login/Login';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
       },
+      {
+        path: "login",
+        element: <Login></Login>
+      }
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <Toaster/>
+    </AuthProvider>
   </React.StrictMode>,
 )
