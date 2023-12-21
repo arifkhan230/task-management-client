@@ -11,6 +11,9 @@ import Home from './pages/Home/Home/Home';
 import AuthProvider from './providers/AuthProvider';
 import Login from './pages/Login/Login';
 import { Toaster } from 'react-hot-toast';
+import Register from './pages/Register/Register';
+import Dashboard from './layouts/Dashboard';
+import Profile from './pages/Dashboard/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -25,9 +28,24 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>
+      },
+      {
+        path:"register",
+        element:<Register></Register>
       }
     ],
   },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children:[
+      {
+        path:"profile",
+        element: <Profile></Profile>
+      }
+    ]
+    
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
