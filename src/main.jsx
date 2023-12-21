@@ -14,6 +14,8 @@ import { Toaster } from 'react-hot-toast';
 import Register from './pages/Register/Register';
 import Dashboard from './layouts/Dashboard';
 import Profile from './pages/Dashboard/Profile/Profile';
+import CreateTask from './pages/Dashboard/CreateTask/CreateTask';
+import ManageTask from './pages/Dashboard/ManageTask/ManageTask';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
       {
         path:"profile",
         element: <Profile></Profile>
+      },
+      {
+        path: "create-task",
+        element:<CreateTask></CreateTask>
+      },
+      {
+        path:"manage-task",
+        element: <ManageTask></ManageTask>
       }
     ]
     
