@@ -74,13 +74,13 @@ const Register = () => {
             {/* <Helmet>
                 <title>NexGen Inventory || Register</title>
             </Helmet> */}
-            <div className="flex mt-20 px-4">
+            <div className="flex justify-center items-center mt-20 px-4">
                 {/* image div */}
-                <div className="hidden md:flex flex-1">
+                {/* <div className="hidden md:flex flex-1">
                     <img className="h-[600px] w-full" src={registerImage} alt="" />
-                </div>
+                </div> */}
                 {/* form div */}
-                <div className="w-full flex-1 border px-8 py-10 bg-cover  bg-gray-200 rounded">
+                <div className="w-full md:w-3/4 lg:w-1/2 border px-8 py-10 bg-cover  bg-gray-200 rounded">
                     <h2 className="text-3xl text-center font-bold mb-6">Register Now!!</h2>
                     <form onSubmit={handleRegister}>
                         {/* name */}

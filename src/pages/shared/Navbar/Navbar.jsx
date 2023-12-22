@@ -1,7 +1,23 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 
 const Navbar = () => {
+
+    const { user, logOut } = useAuth();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast('Logged Out successfully')
+
+            })
+            .catch(error => {
+                console.log(error)
+                toast(error.message)
+            })
+
+    }
 
     const navLinks = <>
         <NavLink
@@ -23,7 +39,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 max-w-screen-2xl mx-auto">
+        <div className="navbar max-w-screen-2xl mx-auto">
             <div className="navbar-start">
                 <div className="drawer flex md:hidden">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -46,14 +62,18 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                  {
-                    navLinks
-                  }
+                    {
+                        navLinks
+                    }
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="login" className="btn btn-accent"> Login
-                </Link>
+                {
+                    user ? <button onClick={handleLogOut} className="btn btn-md text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button> : <Link to="login" className="btn btn-accent"> Login
+                    </Link>
+                }
+
+
             </div>
         </div>
     );

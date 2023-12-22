@@ -42,6 +42,7 @@ const Login = () => {
             .then((result) => {
                 console.log(result);
                 toast.success("Logged in successfully")
+                navigate("/dashboard/create-task")
                
             })
             .catch(err => {
@@ -55,13 +56,13 @@ const Login = () => {
             {/* <Helmet>
                 <title>NexGen Inventory || Login</title>
             </Helmet> */}
-            <div className="flex mt-20 px-4 items-center ">
+            <div className="flex justify-center mt-20 px-4 items-center ">
                 {/* image div */}
-                <div className="hidden md:flex w-1/2">
+                {/* <div className="hidden md:flex w-1/2">
                     <img className="h-[600px] w-full" src={loginImage} alt="" />
-                </div>
+                </div> */}
                 {/* form div */}
-                <div className="w-full  lg:w-2/5 border px-8 py-10 bg-contain  bg-gray-200 rounded">
+                <div className="w-full md:w-2/3 lg:w-1/2 border px-8 py-10 bg-contain  bg-gray-200 rounded">
                     <h2 className="text-3xl text-center font-bold mb-6">Login Now!!</h2>
                     <form onSubmit={handleSignIn}>
 

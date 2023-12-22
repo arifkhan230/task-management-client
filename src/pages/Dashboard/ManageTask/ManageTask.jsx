@@ -11,6 +11,7 @@ const ManageTask = () => {
     const { user } = useAuth()
     console.log(user?.email);
     const axiosPublic = useAxiosPublic();
+    console.log(user);
 
     const { data: tasks = [], refetch } = useQuery({
         queryKey: ['task', user?.email],

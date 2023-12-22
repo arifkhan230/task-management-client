@@ -66,6 +66,15 @@ const Dashboard = () => {
             <li>
                 <NavLink
                     className={linkStyle}
+                    to="/dashboard/previous-task"
+                >
+                    <FaTasks />
+                    Previous Task
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    className={linkStyle}
                     to="/dashboard/manage-task"
                 >
                     <FaRegEdit />
