@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import logo from "../../../assets/images/SSS.png"
 
 
 const Navbar = () => {
@@ -51,13 +52,13 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar max-w-screen-2xl mx-auto">
+        <div className="navbar max-w-screen-2xl mx-auto py-4">
             <div className="navbar-start">
                 <div className="drawer z-50 flex md:hidden">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content">
                         {/* Page content here */}
-                        <label htmlFor="my-drawer" className="drawer-button"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg></label>
+                        <label htmlFor="my-drawer" className="drawer-button"><svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg></label>
                     </div>
                     <div className="drawer-side">
                         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -74,9 +75,9 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-                <a className="btn btn-ghost text-xl">Task</a>
+                <img className="w-60 h-24 object-cover" src={logo} alt="" />
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden md:flex">
                 <ul className="menu menu-horizontal px-1">
                     {
                         navLinks
@@ -85,7 +86,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ? <button onClick={handleLogOut} className="btn btn-md text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button> : <Link to="login" className="btn btn-accent"> Login
+                    user ? <button onClick={handleLogOut} className="btn hidden md:block btn-md text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button> : <Link to="login" className="btn hidden md:flex btn-md  text-white bg-[#2eca7f] hover:bg-[#6610f2]"> Login
                     </Link>
                 }
 

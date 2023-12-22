@@ -76,7 +76,7 @@ const router = createBrowserRouter([
       {
         path: "update-task/:id",
         element:<PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/tasks/${params.id}`)
+        loader: ({params})=> fetch(`https://task-management-server-olive.vercel.app/tasks/${params.id}`)
       }
     ]
 

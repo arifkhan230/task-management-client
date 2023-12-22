@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-// import logo from "../../../assets/images/nexgen.png"
+import logo from "../../assets/images/SSS.png"
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Container from "../Container/Container";
 
@@ -14,21 +14,11 @@ const Footer = () => {
                         <div className="lg:mx-auto w-full p-4 py-6 lg:py-8 lg:pl-0 pl-10">
                             <div className="md:flex w-full  ">
                                 <div className="mb-6 md:mb-0 md:w-1/3 flex flex-col justify-center items-center">
-                                    {/* <img className="w-80 h-24 object-cover" src={logo} alt="" /> */}
+                                    <img className="w-80 h-26 object-cover" src={logo} alt="" />
                                     <p>MoulviBazar,Shylhet</p>
                                 </div>
                                 <div className="grid md:w-2/3 grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
-                                    {/* <div>
-                                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Features</h2>
-                                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                                            <li>
-                                                <Link to="/createShop">Create Shop</Link>
-                                            </li>
-                                            <li className="mt-4">
-                                                <Link to="/watchDemo">Watch Demo</Link>
-                                            </li>
-                                        </ul>
-                                    </div> */}
+                                   
                                     <div>
                                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Follow Us On</h2>
                                         <a href="https://www.facebook.com/profile.php?id=100009023173348">

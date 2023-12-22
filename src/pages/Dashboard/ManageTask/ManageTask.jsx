@@ -55,7 +55,7 @@ const ManageTask = () => {
             <h2 className="text-3xl font-bold my-10 text-center">Manage Your task</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {
-                    tasks?.map((task, idx) => <div key={idx} className="card  bg-base-100 shadow-xl">
+                    tasks?.map((task, idx) => <div key={idx} className="card  bg-base-100 shadow rounded border">
                         <div className="card-body">
                             <h2 className="card-title">{task?.title}</h2>
                             <p className="text-sm">{task?.description}</p>

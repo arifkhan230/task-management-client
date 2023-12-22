@@ -56,7 +56,7 @@ const Register = () => {
                 })
                     .then(() => {
                         toast.success('successfully registered')
-                        navigate('/')
+                        navigate('/dashboard/profile')
                     })
                     .catch(error => {
                         console.log(error)

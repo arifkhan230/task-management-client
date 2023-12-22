@@ -28,6 +28,7 @@ const AllTasks = () => {
                             <div className="card-body">
                               <h2 className="card-title">{task?.title}</h2>
                               <p>Deadline: {task?.deadline}</p>
+                              <p>Priority: {task?.priority}</p>
                              
                             </div>
                           </div>)

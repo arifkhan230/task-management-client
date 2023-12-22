@@ -1,12 +1,19 @@
+import { useEffect } from "react";
 import Container from "../../../Components/Container/Container";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const UserType = () => {
+
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
     return (
         <div className="my-20">
             <Container>
                 <h2 className="text-3xl font-bold my-6 text-center">Users Type</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4" data-aos="fade-left" data-aos-duration="2000">
                     <div className="card rounded border-2">
                         <figure className="pt-6">
                             <img  src="https://www.freeiconspng.com/thumbs/bank-icon/bank-icon-5.png" alt="Shoes" className="rounded-xl h-[100px]" />
@@ -37,7 +44,7 @@ const UserType = () => {
                 </div>
                 {/* Benifited */}
                 <h2 className="text-3xl font-bold my-6 text-center">Who will be Benefited</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4" data-aos="fade-right" data-aos-duration="2000">
                     <div className="card rounded border-2">
                         <figure className="pt-6">
                             <img  src="https://static.thenounproject.com/png/1971021-200.png" alt="Shoes" className="rounded-xl h-[100px]" />

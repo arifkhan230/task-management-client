@@ -2,7 +2,6 @@
 import { FaLock } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
-import loginImage from "../../assets/images/loginImage.jpg"
 import google from "../../assets/images/google.png"
 import useAuth from "../../Hooks/useAuth";
 // import { Helmet } from "react-helmet-async";
@@ -10,7 +9,7 @@ import toast from "react-hot-toast";
 import Container from "../../Components/Container/Container";
 
 const Login = () => {
-    const { signIn, signInGoogle, } = useAuth();
+    const { signIn, signInGoogle, signInGithub } = useAuth();
     const navigate = useNavigate()
 
 
@@ -26,8 +25,7 @@ const Login = () => {
             .then(async (result) => {
                 toast.success("Logged in successfully")
                 console.log(result.user);
-               
-
+                navigate("/dashboard/create-task")
             })
 
             .catch(err => {
@@ -43,7 +41,21 @@ const Login = () => {
                 console.log(result);
                 toast.success("Logged in successfully")
                 navigate("/dashboard/create-task")
-               
+
+            })
+            .catch(err => {
+                console.log(err.message)
+                toast.error(err.message)
+            })
+    }
+
+    const handleGithubLogin = () => {
+        signInGithub()
+            .then((result) => {
+                console.log(result);
+                toast.success("Logged in successfully")
+                navigate("/dashboard/create-task")
+
             })
             .catch(err => {
                 console.log(err.message)
@@ -108,8 +120,8 @@ const Login = () => {
                             <img className='w-6 h-6 ml-2' src={google} alt="" />
                             <p className='text-lg ml-4'>Login with google</p>
                         </div>
-                        <div onClick={handleGoogleLogin} className='flex w-full md:w-1/2 items-center justify-center btn-outline py-2  rounded mt-6 cursor-pointer btn'>
-                            <img className='w-6 h-6 ml-2' src={google} alt="" />
+                        <div onClick={handleGithubLogin} className='flex w-full md:w-1/2 items-center justify-center btn-outline py-2  rounded mt-6 cursor-pointer btn'>
+                            <img className='w-8 h-8 ml-2' src="https://pngimg.com/d/github_PNG58.png" alt="" />
                             <p className='text-lg ml-4'>Login with github</p>
                         </div>
                     </div>
