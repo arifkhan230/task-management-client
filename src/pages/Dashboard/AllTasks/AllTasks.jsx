@@ -10,12 +10,12 @@ const AllTasks = () => {
     const [tasks,setTasks] = useState([])
 
     useEffect(()=>{
-        axiosPublic.get(`/tasks?email=${user.email}`)
+        axiosPublic.get(`/tasks?email=${user?.email}`)
         .then(res=>{
             console.log(res.data);
             setTasks(res.data)
         })
-    },[axiosPublic,user.email])
+    },[axiosPublic,user?.email])
 
     return (
         <div>
