@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 
 const Navbar = () => {
@@ -9,7 +10,7 @@ const Navbar = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                toast('Logged Out successfully')
+                toast.success('Logged Out successfully')
 
             })
             .catch(error => {
@@ -28,14 +29,25 @@ const Navbar = () => {
         >
             Home
         </NavLink>
+
         <NavLink
-            to="/dashboard"
+            to="/contact"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-blue-800 text-xl font-bold mr-4" : "text-black text-xl font-bold mr-4"
             }
         >
-            Dashboard
+            Contact
         </NavLink>
+        {
+            user && <NavLink
+                to="/dashboard/profile"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-blue-800 text-xl font-bold mr-4" : "text-black text-xl font-bold mr-4"
+                }
+            >
+                Dashboard
+            </NavLink>
+        }
     </>
 
     return (

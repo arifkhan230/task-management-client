@@ -24,7 +24,7 @@ const AllTasks = () => {
                     <h2 className="text-3xl font-bold text-center my-6">TODO</h2>
                     <div className="flex flex-col gap-4">
                         {
-                            tasks?.map(task=> <div key={task._id} className="card bg-gray-100 rounded ">
+                            tasks?.map(task=> <div key={task._id} className="card bg-gray-100 rounded" draggable>
                             <div className="card-body">
                               <h2 className="card-title">{task?.title}</h2>
                               <p>Deadline: {task?.deadline}</p>

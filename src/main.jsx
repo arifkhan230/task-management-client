@@ -23,6 +23,8 @@ import {
 } from '@tanstack/react-query'
 import UpdateTask from './pages/Dashboard/UpdateTask/UpdateTask';
 import AllTasks from './pages/Dashboard/AllTasks/AllTasks';
+import Contact from './pages/Contact/Contact';
+import PrivateRoute from './pages/Contact/Routes/PrivateRoutes';
 
 const queryClient = new QueryClient()
 
@@ -44,32 +46,36 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>
+      },
+      {
+        path:"contact",
+        element:<Contact></Contact>
       }
     ],
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: "profile",
-        element: <Profile></Profile>
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       },
       {
         path: "create-task",
-        element: <CreateTask></CreateTask>
+        element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
       },
       {
         path: "previous-task",
-        element: <ManageTask></ManageTask>
+        element: <PrivateRoute><ManageTask></ManageTask></PrivateRoute>
       },
       {
         path: "manage-task",
-        element: <AllTasks></AllTasks>
+        element: <PrivateRoute><AllTasks></AllTasks></PrivateRoute>
       },
       {
         path: "update-task/:id",
-        element:<UpdateTask></UpdateTask>,
+        element:<PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:5000/tasks/${params.id}`)
       }
     ]
